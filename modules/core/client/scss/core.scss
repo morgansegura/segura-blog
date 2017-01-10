@@ -1,0 +1,530 @@
+@import 'util';
+@import 'typography';
+@import 'suzy';
+
+body {
+  background: #fff;
+}
+
+.base-link,
+.base-link:link,
+.base-link:visited {
+  color: $blue;
+}
+.base-link:hover,
+.base-link.selected {
+  color: $blue-lighten;
+}
+
+/* Background-colors */
+
+.cherry-blossom {
+  @include linear-gradient(#FBD3E9, #BB377D);
+}
+
+
+/* ======================
+   === HEADER SECTION ===
+   ======================*/
+
+[ng\:cloak],
+[ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+
+  .logo {
+    text-decoration: none;
+    color: $font-color--dark;
+    .text {
+      font-size: $font-size--xxl;
+      font-family: $norican;
+    }
+    i {
+      font-size: $font-size--lg;
+      position: relative;
+      left: -4px;
+    }
+  }
+}
+.main-nav {
+  ul {
+    padding: 20px 0;
+  }
+  li {display: inline-block;}
+  a,
+  a:link,
+  a:visited {
+    color: $trans-black;
+    background: transparent;
+    text-decoration: none;
+    padding: $tenth-space;
+    @include border-radius(3px);
+  }
+  a:hover {
+    background: #ccc;
+  }
+  a.selected {
+    color: $trans-white;
+    background: $trans-black;
+  }
+}
+
+.html {
+  background: $background--dark;
+  font-size: $font-size--md;
+  padding: $tenth-space;
+  margin: $fifth-space;
+  @include border-radius(3px);
+  .tag {
+    color: $eggnog;
+  }
+  .string {
+    color: #ccc;
+  }
+}
+
+/* =====================
+   === Miscellaneous ===
+   =====================*/
+
+  .responsive {
+    width: 100%;
+  }
+  .break {
+    height: 10px;
+    margin: 60px auto;
+    text-align: center;
+  }
+  .break.dark {
+    background: $trans-black;
+    span {
+      background: #fff;
+      padding: 5px 10px;
+      position: relative;
+      top: -13px;
+      border: solid $trans-black;
+      border-width: 0 5px;
+    }
+    i {
+      font-size: $font-size--md;
+      margin: 0 10px;
+    }
+  }
+  .break.small {
+    background: #a5a5a5;
+    margin: 40px auto 20px auto;
+    height: 1px;
+    span {
+      background: #fff;
+      padding: 5px 10px;
+      position: relative;
+      color: #444;
+      top: -13px;
+      border: solid #a5a5a5;
+      border-width: 1px 2px;
+      font-size: $font-size--sm;
+    }
+    i {
+      font-size: $font-size--md;
+      margin: 0 10px;
+    }
+  }
+
+  .break-vertical-left {
+    border-left: 5px solid #efefef;
+    margin-left: 15px;
+    padding-left: 15px;
+  }
+  .break-vertical-right {
+    border-right: 5px solid #efefef;
+    margin-right: 15px;
+    padding-right: 15px;
+  }
+  .underline {
+    text-decoration: underline
+  }
+
+  .side-note {
+    font-size: 12px;
+    color: #a5a5a5;
+  }
+  .break.line {
+    height: 1px;
+    background: #fff;
+    border-top: 1px dotted #ddd;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  .break.headline.basic {
+
+  }
+
+/* ===============
+   === Buttons ===
+   ===============*/
+
+  .btn {  /* Button Default */
+    text-align: center;
+    background: #efefef;
+    color: $trans-black;
+    border: 1px solid transparent;
+    margin: 20px 0;
+    padding: 10px 50px;
+    position: relative;
+    top: -2px;
+    cursor: pointer;
+  }
+  .btn.shadow { /* Shadow or not */
+    @include box-shadow(0, 2px, 0, rgba(0,0,0,.2));
+  }
+  .btn.rounded {  /* Rounded or not */
+    @include border-radius(3px);
+  }
+  .btn.large { /* Button Size */
+    font-size: $font-size--lg;
+    width: 100%;
+    display: block;
+  }
+  .btn.medium {
+    font-size: $font-size--md;
+    max-width: 50%;
+  }
+  .btn.small {
+    padding: 10px 20px;
+    font-size: $font-size--sm;
+    max-width: 100%;
+  }
+  .btn.tiny {
+    padding: 5px 10px;
+    font-size: $font-size--xs;
+    width: auto;
+  }
+  .btn.h-left { /* Button Alignment */
+    display: inline;
+  }
+
+  .btn.h-middle {
+    margin: 20px auto;
+    position: relative;
+    display: block;
+  }
+  .btn.h-right {
+    float: right;
+  }
+  .btn.dark { /* Button color schemes */
+    color: $trans-white;
+    background: $background--dark;
+    border-color: transparent;
+    box-shadow: unset;
+  }
+  .btn.dark:hover {
+    background: $trans-black;
+  }
+  .btn.orange { /* Orange */
+    color: $trans-white;
+    background: $deep-orange;
+    border-color: $deep-orange;
+  }
+  .btn.orange:hover {
+    background: $deep-orange-lighten;
+  }
+  .btn.amber{ /* Yellow */
+    color: $trans-black;
+    background: $amber;
+    border-color: transparent;
+  }
+  .btn.amber:hover {
+    background: $amber-lighten;
+  }
+  .btn.blue { /* Blue */
+    color: $trans-white;
+    background: $blue;
+    border-color: transparent;
+  }
+  .btn.blue:hover {
+    background: $blue-lighten;
+  }
+  .btn.cyan { /* Cyan */
+    color: $trans-white;
+    background: $cyan;
+    border-color: transparent;
+  }
+  .btn.cyan:hover {
+    background: $cyan-lighten;
+  }
+  .btn.red { /* Red */
+    color: $trans-white;
+    background: $red;
+    border-color: transparent;
+  }
+  .btn.red:hover {
+    background: $red-lighten;
+  }
+  .btn.green { /* Green */
+    color: $trans-white;
+    background: $green;
+    border-color: transparent;
+  }
+  .btn.green:hover {
+    background: $green-lighten;
+  }
+  .btn.pink { /* Pink */
+    color: $trans-white;
+    background: $pink;
+    border-color: transparent;
+  }
+  .btn.pink:hover {
+    background: $pink-lighten;
+  }
+/* =======================
+   === CONTENT SECTION ===
+   =======================*/
+
+  .container {
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .content {
+    padding: 0 20px 60px 20px;
+  }
+
+/* ===========================
+   === POST LAYOUT SECTION ===
+   ===========================*/
+
+  .post-display {
+    text-decoration: none;
+    .img {
+
+    }
+    .gimg {
+
+    }
+    .desc-block {
+      width: 100%;
+      display: block;
+    }
+    .title {
+      background: $trans-black;
+      color: $trans-white;
+      padding: 5px 0 5px 10px;
+      margin: 0;
+      font-weight: normal;
+      display: block;
+    }
+    .description {
+      font-size: $font-size--sm;
+      color: $background--dark;
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      text-align: right;
+      line-height: 26px;
+      display: block;
+    }
+    .vert-break {
+      width: 5px;
+      background: #ccc;
+      margin: 0 10px;
+      border: 1px solid transparent;
+    }
+    .timestamp {
+      background: $trans-black;
+      padding: 5px;
+      margin-left: 5px;
+      color: $trans-white;
+    }
+  }
+
+/* ===================
+   === Tabs Styles ===
+   ===================*/
+
+  .tab-container { /* Tab Container */
+
+    .tabbed-block {  /* Tabbed Content */
+
+      .tabbed.open {
+        display: block;
+      }
+      .tabbed {
+        display: none;
+      }
+    }
+
+    .tab-block { /* Tabs */
+
+      .tab {
+        background: #efefef;
+        color: $trans-black;
+        @include border-radius(3px 3px 0 0);
+        font-weight: bold;
+        padding: 10px 50px;
+        text-align: center;
+      }
+      .tab:hover {
+        background: $trans-black;
+        color: $trans-white;
+      }
+      .tab.open {
+        background: #232323;
+        color: $trans-white;
+      }
+    }
+  }
+
+/* ===================
+   === Bio Section ===
+   ===================*/
+
+  .bio-image {
+
+    .bio-img {
+      max-width: 200px;
+      max-height: 200px;
+
+      position: relative;
+      overflow: hidden;
+
+
+      img {
+        max-width: 233px;
+        position: relative;
+      }
+    }
+    .label {
+      margin: 10px auto;
+      text-align: right;
+    }
+
+  }
+
+
+/* =============
+   === FORMS ===
+   =============*/
+  .contact-form {
+
+  }
+  .form-layout {
+    padding: 20px 2% 0 2%;
+    margin: 20px auto;
+    border: 2px solid #a5a5a5;
+    @include border-radius(3px);
+    .form-group {
+      input[type="text"],
+      input[type="checkbox"],
+      input[type="email"],
+      input[type="password"],
+      textarea {
+        border: 1px solid #a5a5a5;
+        margin: 10px 0;
+        width: auto;
+        display: block;
+        width: 98%;
+        padding: 1%;
+        font-family: monospace;
+      }
+
+      label {
+        display: block;
+        font-size: $font-size--sm;
+      }
+      label.inline {
+
+      }
+    }
+    .submit {
+      margin-left: 5px
+    }
+
+  }
+
+/* ======================
+   === FOOTER SECTION ===
+   ======================*/
+
+  .footer {
+    background: #fff;
+    padding: 0 0 40px 0;
+    border-top: 1px solid #ddd;
+    .social {
+
+      i {
+        border: 1px solid #ccc;
+        color: #333;
+        padding: 5px 7px;
+
+      }
+    }
+    .social-links {
+      padding: 20px 0;
+    }
+    .github i {
+
+    }
+    .twitter i {
+
+    }
+
+  }
+
+/* =========================
+   === RESPONSIVE STYLES ===
+   =========================*/
+
+  @media only screen and (max-width:75em){ /* min-width: 1200px | Desktop */
+
+  }
+
+  @media only screen and (max-width:64em) { /* min-width: 1024px | Tablet Landscape, Laptop, Desktop */
+
+  }
+
+  @media only screen and (max-width:48em){ /* min-width: 768px | Tablet Portrait, smart phones */
+
+    /* [Main navigation] - header & footer */
+
+    .header .main-nav {
+      margin: 10px 0 0 0;
+    }
+    .main-nav {
+      background: #efefef;
+      display: block;
+      text-align: center;
+      width: 1000%;
+    }
+    .social-links {
+      padding: 20px 0;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+    }
+    .header .logo {
+      margin: 0 auto;
+      text-align: center;
+      display: block;
+    }
+  }
+
+  @media only screen and (max-width:30em){ /* min-width: 480px | smart phones, small tweaks */
+
+    /* [Tabs] */
+
+    .tab-container { /* Tab Container */
+      .tab-block { /* Tabs */
+        .tab {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+    }
+
+  }

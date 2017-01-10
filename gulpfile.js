@@ -10,6 +10,7 @@ var _ = require('lodash'),
   testConfig = require('./config/env/test'),
   glob = require('glob'),
   gulp = require('gulp'),
+  sass = require('gulp-sass'),
   gulpLoadPlugins = require('gulp-load-plugins'),
   runSequence = require('run-sequence'),
   plugins = gulpLoadPlugins({
@@ -167,7 +168,13 @@ gulp.task('cssmin', function () {
 // Sass task
 gulp.task('sass', function () {
   return gulp.src(defaultAssets.client.sass)
-    .pipe(plugins.sass())
+    .pipe(plugins.sass({
+      outputStyle: 'compressed',
+      includePaths: ['node_modules/susy/sass']
+    }).on('error', plugins.sass.logError))
+    .pipe(plugins.rename(function(path) {
+      path.dirname = path.dirname.replace('/scss', './css');
+    }))
     .pipe(plugins.autoprefixer())
     .pipe(gulp.dest('./modules/'));
 });
