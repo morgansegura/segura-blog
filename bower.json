@@ -20,7 +20,8 @@
     "lightbox": "~2.9.0",
     "imagesloaded": "~4.1.1",
     "masonry": "~4.1.1",
-    "highlightjs": "~9.9.0"
+    "highlightjs": "~9.9.0",
+    "flexboxgrid": "~6.3.2"
   },
   "overrides": {
     "bootstrap": {

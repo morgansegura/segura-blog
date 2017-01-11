@@ -11,6 +11,7 @@ module.exports = {
         'public/lib/fontawesome/css/font-awesome.css',
         'public/lib/lightbox/dist/css/lightbox.css',
         'public/lib/highlightjs/styles/railcasts.css',
+        'public/lib/flexboxgrid/css/index.css',
         // endbower
       ],
       js: [

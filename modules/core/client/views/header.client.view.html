@@ -1,106 +1,65 @@
-<div class="container" ng-controller="HeaderController as vm">
 
-<!-- Main Nav Header [mnh] -->
-  <nav class="main-nav">
+    <header class="header"  ng-controller="HeaderController as vm">
+        <!-- Header Container [header container] -->
+        <div class="container row clearfix">
+            <!-- Logo [logo] -->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                <a class="logo" ui-sref="/home">
+                      <span class="text">
+                          Segura
+                          <i class="fa fa-pencil-square"></i>
+                      </span>
+                </a>
+            </div><!-- End [logo] -->
+            <!-- Main Nav [main nav] -->
+            <nav class="main-nav col-xs-12 col-sm-6 col-md-6 col-lg-6">
 
-    <ul ng-if="vm.menu.shouldRender(vm.authentication.user);">
+                <ul ng-if="vm.menu.shouldRender(vm.authentication.user);">
+                    <li class="top-shelf dropdown-menu" ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ui-sref-active="active">
 
-      <li ng-repeat="item in vm.menu.items | orderBy: 'position'"
-          ng-if="item.shouldRender(vm.authentication.user);"
-          ng-switch="item.type"
-          ng-class="{ dropdown: item.type === 'dropdown' }"
-          ui-sref-active="active"
-          class="{{item.class}}"
-          uib-dropdown="item.type === 'dropdown'">
+                    <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
+                        <a ui-sref="{{subitem.state}}({{subitem.params}})" ng-bind="subitem.title"></a>
+                    </li>
 
-      <!-- SubItem Dropdown [submenu] -->
-        <a ng-switch-when="dropdown" uib-dropdown-toggle role="button">
-            {{::item.title}}
-        </a>
-        <ul ng-switch-when="dropdown">
-          <li ng-repeat="subitem in item.items | orderBy: 'position'"
-              ng-if="subitem.shouldRender(vm.authentication.user);">
-            <a ui-sref="{{subitem.state}}({{subitem.params}})"
-               ng-bind="subitem.title">
+                        <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
+                    </li>
+                </ul>
 
-            </a>
-          </li>
-        </ul><!-- End [submenu] -->
+                    <li ng-hide="vm.authentication.user" ui-sref-active="active">
+                        <a ui-sref="authentication.signup">Sign Up</a>
+                    </li>
 
-        <!-- Not Sure Yet [?] -->
-        <a ng-switch-default
-           ui-sref="{{item.state}}"
-           ng-bind="item.title">
+                    <li ng-hide="vm.authentication.user">
+                        <a ui-sref="authentication.signin">Sign In</a>
+                    </li>
 
-        </a><!-- End [?] -->
-      </li>
-    </ul>
+                <ul class="user-prefs" ng-show="vm.authentication.user">
+                    <li class="dropdown-menu">
+                        <div class="btn">
+                            <img ng-src="/{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}"  />
+                            <span ng-bind="vm.authentication.user.displayName"></span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <ul class="subpanel">
+                            <li ng-repeat="item in vm.accountMenu.items">
+                                <a ui-sref-active="active" ui-sref="{{item.state}}" ng-bind="item.title"></a>
+                            </li>
+                            <li>
+                                <a ui-sref-active="active" href="/api/auth/signout" target="_self">Signout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav><!-- End [main nav] -->
+        </div><!-- End [header container] -->
+    </header>
 
-    <ul ng-hide="vm.authentication.user">
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signup">Sign Up</a>
-      </li>
-      <li></li>
-      <li ui-sref-active="active">
-        <a ui-sref="authentication.signin">Sign In</a>
-      </li>
-    </ul>
-
-
-      <!-- [user options nav] -->
-
-      <ul ng-show="vm.authentication.user" class="user-options-nav">
-      <li class="dropdown">
-        <a class="">
-          <img ng-src="/{{vm.authentication.user.profileImageURL}}"
-               alt="{{vm.authentication.user.displayName}}" />
-          <span ng-bind="vm.authentication.user.displayName"></span>
-        </a>
-        <ul>
-          <li ui-sref-active="active"
-              ng-repeat="item in vm.accountMenu.items">
-            <a ui-sref="{{item.state}}"
-               ng-bind="item.title"></a>
-          </li>
-          <li class="divider"></li>
-          <li>
-            <a href="/api/auth/signout" target="_self">
-                Signout
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>  <!-- End [user options nav] -->
-
-
-  </nav><!-- End [mnh] -->
-    <!-- Logo [logo] -->
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <a class="logo" href="/home">
-          <span class="text">
-              Segura
-              <i class="fa fa-pencil-square"></i>
-          </span>
-        </a>
-    </div><!-- End [logo] -->
-    <!-- Main Nav [main nav] -->
-    <nav class="main-nav">
-        <ul>
-            <li>
-                <a ui-sref-active="selected" ui-sref="home">Home</a>
-            </li>
-            <li>
-                <a ui-sref-active="selected" ui-sref="projects">Projects</a>
-            </li>
-            <li>
-                <a ui-sref-active="selected" ui-sref="gallery">Gallery</a>
-            </li>
-            <li>
-                <a ui-sref-active="selected" ui-sref="blog">Blog</a>
-            </li>
-            <li>
-                <a ui-sref-active="selected" ui-sref="admin">Admin</a>
-            </li>
-        </ul>
-    </nav><!-- End [main nav] -->
-</div>
+    <script>
+        $(document).ready(function(){
+            $('.dropdown-menu').hover(function(){
+               $(this).children('.subpanel').slideDown();
+            }, function(){
+                $(this).children('.subpanel').slideUp();
+            });
+        });
+    </script>

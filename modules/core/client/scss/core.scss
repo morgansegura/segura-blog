@@ -55,9 +55,20 @@ body {
 }
 .main-nav {
   ul {
-    padding: 20px 0;
+
   }
-  li {display: inline-block;}
+  img {
+    max-width: 25px;
+    padding: 0;
+  }
+  li.subpanel {
+    display: none;
+    background: $trans-black;
+    color: #fff;
+    @include border-radius(0);
+  }
+
+  li.top-shelf {display: inline-block;}
   a,
   a:link,
   a:visited {
@@ -289,7 +300,7 @@ body {
    =======================*/
 
   .container {
-    max-width: 1160px;
+    max-width: 1600px;
     margin: 0 auto;
   }
   .content {
